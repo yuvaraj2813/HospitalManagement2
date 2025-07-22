@@ -22,9 +22,12 @@ public class UserService {
     }
 
 
-    public void registerUser(UserRequest req) {
+    public String  registerUser(UserRequest req) {
+//        if (userRepository.existsByEmail(req.getEmail())) {
+//            throw new RuntimeException("Email already Exists");
+//        }
         if (userRepository.existsByEmail(req.getEmail())) {
-            throw new RuntimeException("Email already Exists");
+            return "Email already exists";
         }
         User user = new User();
         user.setUserName(req.getUserName());
@@ -32,6 +35,7 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(req.getPassword()));
         user.setRole(req.getRole());
         userRepository.save(user);
+        return "User Register Successfully";
     }
 
     public String loginUser(LoginRequest req) {

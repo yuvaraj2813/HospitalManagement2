@@ -17,8 +17,7 @@ public class AuthController {
     private UserService userService;
     @PostMapping("/register")
     public  String registerUser( @RequestBody UserRequest req){
-        userService.registerUser(req);
-        return "User Register Successfully";
+        return  userService.registerUser(req);
     }
 
     @PostMapping("/login")

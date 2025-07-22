@@ -2,6 +2,8 @@ package com.example.HospitalManagement.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 
 @Entity
 @Table(name = "users")
@@ -23,6 +25,16 @@ public class User {
     @Column(nullable = false)
     private String role;
 
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Date createdAt;
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 
     public String getEmail() {
         return email;
